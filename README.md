@@ -220,9 +220,9 @@ spring.test.mockmvc.print=default
 
 ### 自定义属性
 
-   由于有时为了方便项目的开发维护，我们可能需要到自定义配置属性，接下来我们也来搞一下自定义属性配置。
+ 由于有时为了方便项目的开发维护，我们可能需要到自定义配置属性，接下来我们也来搞一下自定义属性配置。
 
-  >在**application.properties**自定义配置属性:
+ >在**application.properties**自定义配置属性:
 
 1.application.properties添加:
 
@@ -325,8 +325,10 @@ public class DefpropertysApplication {
 	}
 }
 ```
+
 4.测试
 IntelliJ IDEA访问
+
 ![bean_def_idea.png](https://upload-images.jianshu.io/upload_images/3012005-e83c94a826f2309d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
  > 创建文件xxx.properties文件方式
@@ -392,9 +394,11 @@ public class DefinePropertiesController {
 `
 
 5.测试
+
 ```
 http://localhost:8084/define/Properties
 ```
+
 ![def_idea_show.png](https://upload-images.jianshu.io/upload_images/3012005-9fb441bce0fc8ecf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 >**下载application.properties[案例demo](https://github.com/eirunye/SpringBoot_defpropertys)**
@@ -495,6 +499,7 @@ public class YmlPropertiesController{
 }
 ```
 3.测试—访问:
+
 ```
 http://localhost:8084/yml/proprety
 ```
@@ -514,6 +519,7 @@ public class YmlPropertyBean {
 // get/set方法.....
 }
 ```
+
 2.在 `YmlPropertyBeanController.class`引用
 
 ```
@@ -528,6 +534,7 @@ public class YmlPropertyBeanController {
 }
 ```
 3.测试-访问
+
 ```
 http://localhost:8084/bean/ymlproperty
 ```
