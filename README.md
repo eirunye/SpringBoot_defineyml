@@ -1,39 +1,49 @@
+---
+title: Spring-Boot 配置文件设置(三)
+date: 2018-08-20 21:51:39
+tags:
+- Java
+- Spring Boot
+categories:
+- 后台
+- Spring Boot
+---
+
 # 简介
 
 上篇我们做了一些简单的运行文件的配置，本篇带领大家来认识常用的一些配置，当然了关于Spring Boot 这些配置太多太多了，如果想了解更多的话直接上官网参考一下，了解相关案例如本篇的配置。 [application.properties配置官方指南参考](https://docs.spring.io/spring-boot/docs/2.0.4.RELEASE/reference/htmlsingle/#common-application-properties)。
 ![Spring Boot.jpg](https://upload-images.jianshu.io/upload_images/3012005-2eecd990df12386f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
 
 # Spring Boot有以下方式配置
-## 一、application.properties配置
+## application.properties配置
 
 在 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 开发工具中创建项目的时候，默认的配置文件是*application.properties*，接下来我们就学习一下然后配置一些我们在开发中经常用到的配置项，进入带领我们揭开Spring Boot 项目的神秘的面纱。
 在下面的文档中我会在每个配置中进行注解，这样能更好的了解，当然官方文档有我们所需的全部配置，大家如果项目开发中有需求那么可以进入[application.properties配置官方指南参考](https://docs.spring.io/spring-boot/docs/2.0.4.RELEASE/reference/htmlsingle/#common-application-properties)。
- 
+
 **英:** Appendix A. Common application properties
-    
-    1. Various properties can be specified inside your application.properties file, inside your application.yml file, or as command line switches. 
-       This appendix provides a list of common Spring Boot properties and references to the underlying classes that consume them.
-    2. [Note]
-        Property contributions can come from additional jar files on your classpath, so you should not consider this an exhaustive list. 
-        Also, you can define your own properties.
-    3. [Warning]
-        This sample file is meant as a guide only. 
-        Do not copy and paste the entire content into your application. Rather, pick only the properties that you need.
-   
+ ```
+ Various properties can be specified inside your application.properties file, inside your application.yml file, or as command line switches.
+ This appendix provides a list of common Spring Boot properties and references to the underlying classes that consume them.
+ [Note]
+ Property contributions can come from additional jar files on your classpath, so you should not consider this an exhaustive list.
+ Also, you can define your own properties.
+ [Warning]
+ This sample file is meant as a guide only. Do not copy and paste the entire content into your application. Rather, pick only the properties that you need.
+  ```
 **译:** 官方指南者三段话概况了今天我们要讲得内容：
+```
+可以在application.properties文件中，application.yml文件中或命令行开关中指定各种属性。 本附录提供了常用Spring Boot属性的列表以及对使用它们的基础类的引用。
+[注意]
+属性贡献可以来自类路径上的其他jar文件，因此您不应将此视为详尽的列表。 此外，您可以定义自己的属性。
+[警告]
+此示例文件仅供参考。 不要将整个内容复制并粘贴到您的应用程序中。 相反，只选择您需要的属性。
+```
+所以我们在添加某些配置属性的时候，一定要根据自己的需要来添加，不然有时出错了，不知道哪里找问题。
 
-    1. 可以在application.properties文件中，application.yml文件中或命令行开关中指定各种属性。 本附录提供了常用Spring Boot属性的列表以及对使用它们的基础类的引用。
-    2. [注意]
-       属性贡献可以来自类路径上的其他jar文件，因此您不应将此视为详尽的列表。 此外，您可以定义自己的属性。
-    3. [警告]
-       此示例文件仅供参考。 不要将整个内容复制并粘贴到您的应用程序中。 相反，只选择您需要的属性。
-
-所以我们在添加某些配置属性的时候，一定要根据自己的需要来添加，不然有时出错了，不知道哪里找问题。 
- 
-### 1. 常用的application.properties配置
+### 常用的application.properties配置
 
 一般情况下在src目录下的/main/resource文件夹中新建*`application.properties`*文件，目录结构如下：
-```      
+```
 |--src
    |--main
       |--resources
@@ -94,11 +104,11 @@ server.error.path=/error
 # 是否启用HTTP / 2支持，如果当前环境支持它。
 server.http2.enabled=false
 # 服务器端口默认为:8080
-server.port=8084 
+server.port=8084
 # SP servlet的类名。
 server.servlet.jsp.class-name=org.apache.jasper.servlet.JspServlet
 # 主调度程序servlet的路径。
-server.servlet.path=/home 
+server.servlet.path=/home
 # 会话cookie名称
 server.servlet.session.cookie.name=propertydemo
 
@@ -106,7 +116,7 @@ server.servlet.session.cookie.name=propertydemo
 # HTTP encoding
 #------------------------------
 # HTTP请求和响应的字符集。 如果未明确设置，则添加到“Content-Type”标头。
-spring.http.encoding.charset=UTF-8 
+spring.http.encoding.charset=UTF-8
 # 是否启用http编码支持。
 spring.http.encoding.enabled=true
 #--------------------
@@ -199,7 +209,7 @@ spring.test.mockmvc.print=default
 
 # GSON
 
-# JDBC 
+# JDBC
 
 # JEST (Elasticsearch HTTP client) (JestProperties)
 
@@ -208,13 +218,14 @@ spring.test.mockmvc.print=default
 ```
 > 查看常用配置文件[application.properties](https://github.com/eirunye/SpringBoot_Property/blob/master/src/main/resources/application.properties)
 
-### 2. 自定义属性
+### 自定义属性
 
    由于有时为了方便项目的开发维护，我们可能需要到自定义配置属性，接下来我们也来搞一下自定义属性配置。
-      
+
   >在**application.properties**自定义配置属性:
 
 1.application.properties添加:
+
 ```
 #--------------------------------
 # 自定义属性
@@ -222,8 +233,10 @@ spring.test.mockmvc.print=default
 com.eirunye.defproname="root"
 com.eirunye.defpropass="123456"
 ```
+
 2.在**DefPropertyController.class**引用
-```   
+
+```
 @RestController
 public class DefPropertyController {
 
@@ -239,24 +252,31 @@ public class DefPropertyController {
     }
 }
 ```
+
 * **注意**
 在获取自定义属性时一定要严格按照配置文件来获取并且Value里面的字符串一定是`$`+花括号`{***}`,花括号里面的`***`表示为:`application.properties里面自定义的字符串`，所以本例就是表示为:` @Value("${com.eirunye.defproname}")` 。
 如果`application.properties`有自定义为` test.ok="haha" `,同样的获取方式为:`@Value("${test.ok}")`
 
 3.测试`这里暂未使用测试代码的方式，后面的文章会讲到`
-* IntelliJ IDEA访问 
+
+* IntelliJ IDEA访问
 ```
 http://localhost:8084/defproprety
 ```
+
 ![def_idea.png](https://upload-images.jianshu.io/upload_images/3012005-d5479d7990d69320.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
 * [Postman访问](https://www.getpostman.com/)
+
 ![def_postman.png](https://upload-images.jianshu.io/upload_images/3012005-a52caf3352427bd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 > 通过Bean的形式获取
 
 假如我们遇到这样情况，自定义属性多，然后每个都是通过`@Value(${""})`方式的话可能会很容易出错，那么我们可以采用以下方式。
-1. 新建一个`Properties.class`
+
+1.新建一个`Properties.class`
 添加`@ConfigurationProperties(prefix = "com.eirunye")`//表示的是通过自定义属性查找，如果自定义是:`test.ok=haha`,则该这样表示:`@ConfigurationProperties(prefix = "test")`
+
 ```
 @ConfigurationProperties(prefix = "com.eirunye")//添加该注解
 public class Properties {
@@ -276,7 +296,9 @@ public class Properties {
         this.defpropass = defpropass;
     }}
 ```
-2. 在controller包下创建 `DefBeanPropertyController.class`
+
+2.在controller包下创建 `DefBeanPropertyController.class`
+
 ```
 @RestController
 public class DefBeanPropertyController {
@@ -289,8 +311,10 @@ public class DefBeanPropertyController {
         return "这是通过Bean注解的方式获取属性: " + properties.getDefproname() + ",密码为: " + properties.getDefpropass();
     }}
 ```
-3. 在项目的入口文件**Application**添加注解**@EnableConfigurationProperties**
+
+3.在项目的入口文件**Application**添加注解**@EnableConfigurationProperties**
 最后加上包名不然可能找不到扫描文件如:`@EnableConfigurationProperties({com.eirunye.defpropertys.bean.Properties.class})`。
+
 ```
 @SpringBootApplication
 @EnableConfigurationProperties({com.eirunye.defpropertys.bean.Properties.class})//添加注解bean的扫描文件
@@ -305,12 +329,14 @@ public class DefpropertysApplication {
 IntelliJ IDEA访问
 ![bean_def_idea.png](https://upload-images.jianshu.io/upload_images/3012005-e83c94a826f2309d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
-  > 创建文件xxx.properties文件方式
+ > 创建文件xxx.properties文件方式
 
 我们可以自己创建一个自定义属性的文件如本例**def.properties**，(*注:一般都是以 **.properties** 文件结尾*)
 
 1.添加自定义`def.properties`配置如下:
+
 ![def_file.png](https://upload-images.jianshu.io/upload_images/3012005-7730447bb95f7fee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
+
 ```
 #--------------------------------
 # 自定义属性
@@ -320,7 +346,9 @@ com.eirunye.defineuser="property"
 # 年龄
 com.eirunye.defineage=20
 ```
+
 2.创建 `DefineProperties.class`
+
 ```
 @Configuration
 @ConfigurationProperties(prefix = "com.eirunye")//添加注解 ConfigurationProperties "com.eirunye"表示的是自定义属性
@@ -344,8 +372,10 @@ public class DefineProperties {
     public void setDefineage(int defineage) {
         this.defineage = defineage;
     }}
-```   
- 2.在`DefinePropertiesController.class`引用
+```
+
+3.在`DefinePropertiesController.class`引用
+
 ```
 @RestController
 public class DefinePropertiesController {
@@ -356,24 +386,26 @@ public class DefinePropertiesController {
         return "新建文件自定义属性姓名："+defineProperties.getDefineuser()+",新建文件自定义属性年龄："+defineProperties.getDefineage();
     }
 }
-```   
-3.别忘了在Application里面添加配置`@EnableConfigurationProperties`,即：`@EnableConfigurationProperties({com.eirunye.defpropertys.bean.Properties.class,com.eirunye.defpropertys.bean.DefineProperties.class})
+```
+
+4.别忘了在Application里面添加配置`@EnableConfigurationProperties`,即：`@EnableConfigurationProperties({com.eirunye.defpropertys.bean.Properties.class,com.eirunye.defpropertys.bean.DefineProperties.class})
 `
-4.测试 
+
+5.测试
 ```
 http://localhost:8084/define/Properties
 ```
 ![def_idea_show.png](https://upload-images.jianshu.io/upload_images/3012005-9fb441bce0fc8ecf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
-     
+
 >**下载application.properties[案例demo](https://github.com/eirunye/SpringBoot_defpropertys)**
 
 
-## 二、application.yml配置
+## application.yml配置
 
 由于application.properties配置有点繁琐，简洁是我们非常喜欢的，那么在Spring Boot程序里面当然也是可以用.yml文件来配置的，接下来让我们进入对.yml文件的一些相关配置吧，官方文档[Using YAML Instead of Properties](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-yaml)。
 
-### 1.常见的配置 
-   
+### 常见的配置
+
 首先在src目录下的/main/resource文件夹中新建`application.yml、application-dev.yml、application-prod.yml`三个文件，删除`application.properties`文件，目录结构如下:
 ```
 |--src
@@ -383,10 +415,11 @@ http://localhost:8084/define/Properties
          |--application-dev.yml
          |--application-prod.yml
 ```
- 相信很多人要骂街了，这什么情况不是说,yml配置很给力吗？怎么还有创建那么多文件，这不是比上面的  `application.properties`配置还多此一举吗？莫急接下来让我们来看看.yml的配置之后，我相信你肯定在项目中会喜欢用它。
+相信很多人要骂街了，这什么情况不是说,yml配置很给力吗？怎么还有创建那么多文件，这不是比上面的  `application.properties`配置还多此一举吗？莫急接下来让我们来看看.yml的配置之后，我相信你肯定在项目中会喜欢用它。
 
 常见的配置属性如下: 【注意: 这里属性之间的间隔必须按照要求而来,如:冒号后面要空格】
 `application.yml` 配置
+
 ```
 spring:
   profiles:
@@ -412,23 +445,28 @@ spring:
       replace: any
     mockmvc:
       print: default
-  servlet:   
+  servlet:
     multipart:
-      enabled: true   
-```     
+      enabled: true
+```
+
 `application-dev.yml` 可以当成正式服务器端口
+
 ```
 server:
   port: 8084
 ```
 
 `application-prod.yml` 可以当成测试服务器端口
+
 ```
 server:
   port: 8080
 ```
+
 * **查看更多[.yml配置](https://github.com/eirunye/SpringBoot_Property/blob/master/src/main/resources/application.yml)**
-### 2.自定义yml配置
+
+### 自定义yml配置
 > 在application.yml配置
 
 1.和上面的application.properties类似，但是需要注意的是*格式问题*
@@ -438,7 +476,9 @@ com:
     ymlname: ymlroot
     ymlpass: yml123456
 ```
+
 2.通过`@Value("${com.eirunye.ymlname}")`获取
+
 ```
 @RestController
 public class YmlPropertiesController{
@@ -454,16 +494,17 @@ public class YmlPropertiesController{
     }
 }
 ```
-3.测试
-访问:
+3.测试—访问:
 ```
 http://localhost:8084/yml/proprety
 ```
+
 ![yml_def.png](https://upload-images.jianshu.io/upload_images/3012005-eae9ed7abb04ee43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 > 通过Bean方式获取和application.properties方式一样
 
 1.创建YmlPropertyBean.class
+
 ```
 @ConfigurationProperties(prefix = "com.eirunye")//添加该注解
 public class YmlPropertyBean {
@@ -473,7 +514,8 @@ public class YmlPropertyBean {
 // get/set方法.....
 }
 ```
-2. 在 `YmlPropertyBeanController.class`引用
+2.在 `YmlPropertyBeanController.class`引用
+
 ```
 @RestController
 public class YmlPropertyBeanController {
@@ -485,19 +527,19 @@ public class YmlPropertyBeanController {
     }
 }
 ```
-3.测试
-访问
+3.测试-访问
 ```
 http://localhost:8084/bean/ymlproperty
 ```
+
 ![yml_bean_def.png](https://upload-images.jianshu.io/upload_images/3012005-5551aabdebf638ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 
 
->下载.yml[案例demo](https://github.com/eirunye/SpringBoot_defineyml)    
+>下载.yml[案例demo](https://github.com/eirunye/SpringBoot_defineyml)
 
-# 三、总结
+# 总结
 
-   1. 本篇主要讲得配置文件，到此就结束了，在开发中这是我们经常用到。
-   2. 在本篇有些相关配置，本例的代码实例还没涉及到，接下来会继续结合相关的配置案例继续更新。
-   3. 相信大家也有所掌握。
+   1.本篇主要讲得配置文件，到此就结束了，在开发中这是我们经常用到。
+   2.在本篇有些相关配置，本例的代码实例还没涉及到，接下来会继续结合相关的配置案例继续更新。
+   3.相信大家也有所掌握。
 
