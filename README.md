@@ -12,7 +12,7 @@ categories:
 # 简介
 
 上篇我们做了一些简单的运行文件的配置，本篇带领大家来认识常用的一些配置，当然了关于Spring Boot 这些配置太多太多了，如果想了解更多的话直接上官网参考一下，了解相关案例如本篇的配置。 [application.properties配置官方指南参考](https://docs.spring.io/spring-boot/docs/2.0.4.RELEASE/reference/htmlsingle/#common-application-properties)。
-<div>
+<div align="center">
 <img src="https://upload-images.jianshu.io/upload_images/3012005-2eecd990df12386f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
 </div>
 
